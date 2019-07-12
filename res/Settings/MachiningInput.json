@@ -1,0 +1,248 @@
+{
+    "POST_INPUT": [
+        {
+            "var": "header", 
+            "value": "G90,G21,G54,M3", 
+            "type": "list", 
+            "name": "Encabezado"
+        }, 
+        {
+            "var": "footer", 
+            "value": "M5", 
+            "type": "list", 
+            "name": "Pie de codigo"
+        }, 
+        {
+            "var": "cut", 
+            "value": "G01", 
+            "type": "string", 
+            "name": "Corte"
+        }, 
+        {
+            "var": "rapid", 
+            "value": "G00", 
+            "type": "string", 
+            "name": "Traslado"
+        }, 
+        {
+            "var": "feed", 
+            "value": "F", 
+            "type": "string", 
+            "name": "Feed"
+        }, 
+        {
+            "var": "spindle", 
+            "value": "S", 
+            "type": "string", 
+            "name": "Spindle"
+        }, 
+        {
+            "var": "round_tol", 
+            "value": "2", 
+            "type": "number", 
+            "name": "Decimales"
+        }
+    ], 
+    "CHECKBOX_INPUT": {
+        "autocluster": {
+            "image": "cluster.png", 
+            "name": "Deteccion de piezas"
+        }, 
+        "save_image": {
+            "image": "save_image.png", 
+            "name": "Guardar capturas de pantalla"
+        }, 
+        "sort_closest": {
+            "image": "closest.png", 
+            "name": "Ordenar por cercania"
+        }, 
+        "sorting": {
+            "image": "array.png", 
+            "name": "Ordenar Zig-Zag"
+        }
+    }, 
+    "MACHINING_INPUT": {
+
+    	"cnc": [
+    	    [
+                "cut_diam", 
+                "Diametro cortador:"
+            ], 
+			
+         	[
+                "spindle", 
+                "Spindle RPM:"
+            ],
+            [
+                "sec_plane", 
+                "Plano de seguridad:"
+            ], 
+            [
+                "tolerance", 
+                "Tolerancia curvas:"
+            ],	
+            [
+                "feed_rapid", 
+                "Movimiento rapido mm/min:"
+            ]
+        ],
+
+        "desbaste": [
+            [
+                "depth", 
+                "Profundidad corte (Negativo):"
+            ], 
+            [
+                "entries", 
+                "Numero de entradas en Z:"
+            ], 
+            [
+                "xy_dist", 
+                "% del diametro entre pasadas (0-1):"
+            ], 
+            [
+                "plunge", 
+                "Plunge mm lineales:"
+            ], 
+            [
+                "feed_cut", 
+                "Feed mm/min:"
+            ], 
+            [
+                "feed_plunge", 
+                "Plunge mm/min:"
+            ], 
+            [
+                "circular_pocketing", 
+                "Caja cirular (0,1):"
+            ], 
+            [
+                "finish_pass", 
+                "Pasada Acabado mm:"
+            ], 
+            [
+                "finish_entries", 
+                "Pasada Acabado entradas:"
+            ]
+        ], 
+        "grabado": [
+            [
+                "depth", 
+                "Profundidad corte (Negativo):"
+            ], 
+            [
+                "entries", 
+                "Numero de pasadas:"
+            ], 
+            [
+                "feed_cut", 
+                "Feed mm/min:"
+            ], 
+            [
+                "feed_plunge", 
+                "Plunge mm/min:"
+            ]
+        ], 
+        "corte": [
+            [
+                "depth", 
+                "Profundidad corte (Negativo):"
+            ], 
+            [
+                "entries", 
+                "Numero de pasadas:"
+            ], 
+            [
+                "plunge", 
+                "Plunge mm lineales:"
+            ], 
+            [
+                "feed_cut", 
+                "Feed mm/min:"
+            ], 
+            [
+                "feed_plunge", 
+                "Plunge mm/min:"
+            ], 
+            [
+                "finish_pass", 
+                "Pasada Acabado mm:"
+            ], 
+            [
+                "finish_entries", 
+                "Pasada Acabado entradas:"
+            ]
+        ], 
+        "barrenado": [
+            [
+                "feed", 
+                "Feed mm/min:"
+            ], 
+            [
+                "depth", 
+                "Profundidad barreno (Negativo):"
+            ], 
+            [
+                "entries", 
+                "Numero pasadas"
+            ]
+        ]
+        }, 
+    "GENERAL_INPUT": {
+        "feed_rapid": {
+            "input": {
+                "DecimalPlaces": 0, 
+                "MinValue": 1.0, 
+                "MaxValue": 100000, 
+                "Increment": 1
+            }, 
+            "name": "Movimiento rapido", 
+            "unit": "mm/min", 
+            "image": "rapid.png"
+        }, 
+        "sec_plane": {
+            "input": {
+                "DecimalPlaces": 2,
+                "MinValue": 1.0,
+                "MaxValue": 8000,
+                "Increment": 0.01
+            },
+            "name": "Plano de seguridad",
+            "unit": "mm", 
+            "image": "sec_plane.png"
+        }, 
+        "tolerance": {
+            "input": {
+                "DecimalPlaces": 2, 
+                "MinValue": 0.01, 
+                "MaxValue": 500, 
+                "Increment": 0.01
+            }, 
+            "name": "Tolerancia", 
+            "unit": "mm", 
+            "image": "tolerance.png"
+        }, 
+        "cut_diam": {
+            "input": {
+                "DecimalPlaces": 2, 
+                "MinValue": 0.01, 
+                "MaxValue": 1000, 
+                "Increment": 0.01
+            }, 
+            "name": "Diametro cortador", 
+            "unit": "mm", 
+            "image": "radius.png"
+        }, 
+        "spindle": {
+            "input": {
+                "DecimalPlaces": 0, 
+                "MinValue": 0.0, 
+                "MaxValue": 100000, 
+                "Increment": 1
+            }, 
+            "name": "Velocidad router", 
+            "unit": "rev/min", 
+            "image": "spindle.png"
+        }
+    }
+}

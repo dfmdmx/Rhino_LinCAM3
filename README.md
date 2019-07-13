@@ -1,5 +1,5 @@
-﻿# LinarandCAM
-Es un plugin de Rhino5 que te permite generar codigo-g en 2D. 
+# LinarandCAM
+## Es un plugin de Rhino5 que te permite generar codigo-g en 2D. 
 
 ### Código Color curvas según compensación de la herramienta:
 
@@ -15,5 +15,5 @@ Es un plugin de Rhino5 que te permite generar codigo-g en 2D.
 Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos actualizarlo de manera frecuente. No es apto para todo tipo de maquinaria CNC. Esta enfocado para controladores GRBL como Arduino y TinyG por lo que su uso es responsabilidad del usuario final y no nos hacemos responsables por ningún tipo de daño directo o indirecto que pueda causar el programa.
 
 ## Instalación Windows:
-Descarga el nuevo instalador para Windows de 64bits <a href="https://github.com/dandfmd/LinarandCAM3/raw/master/LinarandCAM3.rhi">LinarandCAM3.rhi</a><br>
+<a href="https://github.com/dandfmd/LinarandCAM3/raw/master/LinarandCAM3.rhi">LinarandCAM3.rhi</a><br>
 

@@ -1,4 +1,7 @@
 # LinarandCAM 3
+
+![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinarandCAM3/master/res/Icons/Logo/Rhino_LinarandCAM3_100.png)
+
 Rhino 6 plugin to create 2D g-code for CNC machining. 
 
 ### Color code:

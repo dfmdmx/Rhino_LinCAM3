@@ -9,7 +9,7 @@ Rhino 6 plugin to create 2D g-code for CNC machining.
 Prior into opening the program you will need to assign a color to each curve depending on the desire machining preset.
 
  <table>
- <tbody><tr><th>Objeto</th><th>Nombre Color</th><th>RGB</th><th>Rutina</th></tr><tr>
+ <tbody><tr><th>Object</th><th>Color name</th><th>RGB</th><th>Machining job</th></tr><tr>
  </tr><tr><td>Curve closed</td><td>BLUE</td><td>(0,0,255)</td><td>Internal compensation</td></tr>
  <tr><td>Curve closed</td><td>RED</td><td>(255,0,0)</td><td>External compensation</td></tr>
  <tr><td>Curve closed/open</td><td>GREEN</td><td>(0,255,0)</td><td>Engraving over line</td></tr>

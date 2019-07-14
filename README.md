@@ -8,12 +8,16 @@ Rhino 6 plugin to create 2D g-code for CNC machining.
 
 Prior into opening the program you will need to assign a color to each curve depending on the desire machining preset.
 
- - Curve / RED, rgb (255,0,0) / Outer cut
- - Curve / BLUE, rgb (0,0,255) / Inner cut
- - Curve / GREEN, rgb (0,255,0) / Over cut
- - Curve / MAGENTA, rgb (0,255,255) / Box cut (Super beta!)
- - Point / Any color but white / Drill
- - Point / WHITE, rgb (255,255,255) / Work cero, G54
+ <table>
+ <tbody><tr><th>Objeto</th><th>Nombre Color</th><th>RGB</th><th>Rutina</th></tr><tr>
+ </tr><tr><td>Curve closed</td><td>BLUE</td><td>(0,0,255)</td><td>Internal compensation</td></tr>
+ <tr><td>Curve closed</td><td>RED</td><td>(255,0,0)</td><td>External compensation</td></tr>
+ <tr><td>Curve closed/open</td><td>GREEN</td><td>(0,255,0)</td><td>Engraving over line</td></tr>
+ <tr><td>Curve closed</td><td>MAGENTA</td><td>(0,255,255)</td><td>Box (Super beta!)</td></tr>
+ <tr><td>Point</td><td>WHITE</td><td>(255,255,255)</td><td>Work cero - G54 **</td></tr>
+ <tr><td>Point</td><td>Any color but white</td><td>NA</td><td>Drill</td></tr>
+ </tbody>
+ </table>
  
 Every other object with difrenet color will be omitted from the selection. 
 

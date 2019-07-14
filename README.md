@@ -1,19 +1,14 @@
-# LinarandCAM
-## Es un plugin de Rhino5 que te permite generar codigo-g en 2D. 
+# LinarandCAM 3
+Rhino 6 plugin to create 2D g-code for CNC machining. 
 
-### Código Color curvas según compensación de la herramienta:
+### Color code:
+ - Curve / RED, rgb (255,0,0) / Outer cut
+ - Curve / BLUE, rgb (0,0,255) / Inner cut
+ - Curve / GREEN, rgb (0,255,0) / Over cut
+ - Curve / MAGENTA, rgb (0,255,255) / Box cut
+ - Point / Any color but white / Drill
+ - Point / WHITE, rgb (255,255,255) / Work cero, G54
 
- Azúl: (BLUE, rgb (0,0,255): Compensación interna <br>
- Rojo: (RED, rgb (255,0,0): Compensación externa <br>
- Verde: (GREEN, rgb (0,255,0): Grabado sobre linea <br>
- Magenta: (MAGENTA, rgb (0,255,255): Caja  (En desarollo) <br>
- Punto: (Cualquier color menos blanco): Barreno <br>
- Punto: (BLANCO): Cero de trabajo, G54 <br>
+### Disclaimer:
 
-### Versión Beta:
-
-Actualmente el proyecto se encuentra en desarrollo por lo que te recomendamos actualizarlo de manera frecuente. No es apto para todo tipo de maquinaria CNC. Esta enfocado para controladores GRBL como Arduino y TinyG por lo que su uso es responsabilidad del usuario final y no nos hacemos responsables por ningún tipo de daño directo o indirecto que pueda causar el programa.
-
-## Instalación Windows:
-<a href="https://github.com/dandfmd/LinarandCAM3/raw/master/LinarandCAM3.rhi">LinarandCAM3.rhi</a><br>
-
+Currently the project is under development so we recommend you update it frequently. It is not suitable for all types of CNC machines. It was developed for GRBL controllers such as Arduino and TinyG. **Its use is responsibility of the end user and we are not responsible for any direct or indirect damage that this program may cause.Hope yoy find it usefull.**

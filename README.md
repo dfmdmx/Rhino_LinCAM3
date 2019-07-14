@@ -8,7 +8,7 @@ Prior into opening the program you will need to assing a color to each curve dep
  - Curve / RED, rgb (255,0,0) / Outer cut
  - Curve / BLUE, rgb (0,0,255) / Inner cut
  - Curve / GREEN, rgb (0,255,0) / Over cut
- - Curve / MAGENTA, rgb (0,255,255) / Box cut
+ - Curve / MAGENTA, rgb (0,255,255) / Box cut (Super beta!)
  - Point / Any color but white / Drill
  - Point / WHITE, rgb (255,255,255) / Work cero, G54
  

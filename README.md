@@ -9,13 +9,15 @@ LinarandCAM 3 converts Rhino 2D geometry into cutting paths for all types of g-c
 The workflow consists in three steps.
 
 1. **LinarandCAM3** - This step is intended to be done once. Create a preset for each type of material with basic CAM properties such as depth, number of passes, feed, compensation, etc. this preset is linked to a specific color and type of geometry. This is considered as a fisrt setup and does not properly belongs to the workflow.
+
 2. **Rhino** - Prepare the drawing by assigning a color to each curve depending on the desire machining job.
+
 3. **LinarandCAM3**
-   - Select all curves
-   - Select material 
-   - Select machine 
-   - Generate g-code 
-   - Continue to next drawing...**
+   - Select all curves 
+   - Select material (preset)
+   - Select machine (postprocessor)
+   - Generate g-code (write .nc file)
+   - Continue to next drawing... 
 
 This workflow allows to queue a list of drawings waiting to be processed by the plugin in step three. We think this aproach reduces the time in the most tedious part of the manufacturing processes and opens a door into automating the process.
 
@@ -34,7 +36,7 @@ Prior into opening the program you will need to assign a color to each curve dep
  </tbody>
  </table>
  
-Every other object with difrenet color will be omitted from the selection. 
+Every other object with difrenet color or type of geometry will be omitted from the selection allowing for a rough selection. 
 
 ### Disclaimer:
 

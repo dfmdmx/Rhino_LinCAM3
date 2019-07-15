@@ -39,4 +39,4 @@ Prior into opening the program you will need to assign a color to each curve dep
 
 ### Disclaimer:
 
-Currently the project is under development so we recommend you update it frequently. It is not suitable for all types of CNC machines. It was developed for GRBL controllers such as Arduino and TinyG. It was made by the conjuction of different scripts used along the years in the workshop. So here it goes... **Its use is responsibility of the end user and we are not responsible for any direct or indirect damage that this program may cause but mainly we hope you find it usefull!**
+Currently the project is under development so we recommend you update it frequently. It is not suitable for all types of CNC machines. It was developed for GRBL controllers such as Arduino and TinyG. It was made by the conjuction of different scripts used along the years in the workshop. So here it goes... **Its use is responsibility of the end user and we are not responsible for any direct or indirect damage that this program may cause, but mainly, we hope you find it usefull!**

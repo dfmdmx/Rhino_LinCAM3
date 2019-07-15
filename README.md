@@ -2,7 +2,16 @@
 
 ![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinarandCAM3/master/res/Icons/Logo/Rhino_LinarandCAM3_100.png)
 
-Rhino 6 plugin to create 2D g-code for CNC machining. 
+LinarandCAM 3 converts Rhino 2D geometry into cutting paths for all types of g-code based CNC machines. Its UI is mainly focused on reducing the time spend between opening the drawing and creating the g-code file, making it usefull for batch production. 
+
+### Basics
+
+The workflow consists in three steps. The fisrt two are done outside the plugin, allowing the workflow to queue a list of drawings waiting for g-code processing made by the plug-in in step 3. 
+
+1. Prepare the drawing - Involves assigning a color to each curve
+2. Create a preset for each type of material with basic CAM properties such as depth, number of passes, feed, compensation, etc. that are linked to a specific color and type of geometry. (This is done inside the plugin, but once, so we dont add this setup time into the workflow.)
+
+3. Open LinarandCAM3 - Select all curves - Select material - Select machine - Generate g-code - Continue to next drawing...
 
 ### Color code:
 

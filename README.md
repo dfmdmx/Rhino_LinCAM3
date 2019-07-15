@@ -35,7 +35,7 @@ Prior into opening the program you will need to assign a color to each curve dep
  <tr><td>Point</td><td>Any color but white</td><td>NA</td><td>Drill</td></tr>
  </tbody>
  </table>
-** If no point is selected the origin point of the drawing will be used. Using the white point is usefull only when working with multiple cut sheets in a single file. 
+** If no white point is selected the origin point of the drawing will be used as work cero. Using the white point is usefull only when working with multiple cut sheets in a single file. 
 
 ### Disclaimer:
 

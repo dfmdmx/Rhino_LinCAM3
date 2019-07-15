@@ -21,7 +21,7 @@ The workflow consists in three steps:
 
 This workflow allows to queue a list of drawings to be processed by the plugin in step three. We think this aproach reduces the time in the most tedious part of the manufacturing processes and opens a door into automating them.
 
-### Color code:
+### Color code
 
 Prior into opening the plugin you will need to assign a color to each curve depending on the desired machining job. Every other object with different color or type of geometry will be omitted allowing for a rough selection.
 
@@ -37,6 +37,6 @@ Prior into opening the plugin you will need to assign a color to each curve depe
  </table>
 ** If no white point is selected the origin point of the drawing will be used as work cero. Using the white point is usefull only when working with multiple cut sheets in a single file. 
 
-### Disclaimer:
+### Disclaimer
 
 Currently the project is under development so we recommend you to update it frequently. It is not suitable for all types of CNC machines. It was developed for GRBL controllers such as Arduino and TinyG. It was made by the conjuction of different scripts used along the years in the workshop. So here it goes... **Its use is responsibility of the end user and we are not responsible for any direct or indirect damage that this program may cause, but mainly, we hope you find it useful!**

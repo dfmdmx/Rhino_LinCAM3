@@ -23,7 +23,7 @@ This workflow allows to queue a list of drawings waiting to be processed by the 
 
 ### Color code:
 
-Prior into opening the program you will need to assign a color to each curve depending on the desire machining job. Every other object with diferent color or type of geometry will be omitted allowing for a rough selection.
+Prior into opening the plugin you will need to assign a color to each curve depending on the desire machining job. Every other object with diferent color or type of geometry will be omitted allowing for a rough selection.
 
  <table>
  <tbody><tr><th>Object</th><th>Color name</th><th>RGB</th><th>Machining job</th></tr><tr>

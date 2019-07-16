@@ -409,7 +409,7 @@ class camDialog(forms.Form):
         HeaderLink.Click += self.OnLinkButtonClick
         HeaderLogo = forms.ImageView()
         #HeaderLogo.Size = drawing.Size(50,100)
-        HeaderLogo.Image = drawing.Bitmap(os.path.join(self.image_folder,'Logo','Rhino_LinarandCAM3_100.png'))
+        HeaderLogo.Image = drawing.Bitmap(os.path.join(self.image_folder,'Logo','Rhino_LinCAM3_100.png'))
          # Add controls to layout
         layout.AddRow(HeaderLogo,None,HeaderText,HeaderLink)
         return layout

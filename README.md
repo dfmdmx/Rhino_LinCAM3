@@ -1,18 +1,18 @@
-# LinarandCAM 3
+# LinCAM 3
 
 ![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinarandCAM3/master/res/Icons/Logo/Rhino_LinarandCAM3_100.png)
 
-LinarandCAM 3 transforms Rhino 2D geometry into cutting paths for all types of g-code based CNC machines. Its UI is mainly focused on reducing the time spend between opening the drawing and creating the g-code file, making it useful for batch production. 
+LinCAM 3 transforms Rhino 2D geometry into cutting paths for all types of g-code based CNC machines. Its UI is mainly focused on reducing the time spend between opening the drawing and creating the g-code file, making it useful for batch production. 
 
 ### Basics
 
 The workflow consists in three steps:
 
-1. **LinarandCAM3** - This step is intended to be done once. Create a preset for each type of material with basic CAM properties such as depth, number of passes, feed, compensation, etc. This preset is linked to a specific color and type of geometry. This is considered as a fisrt setup and does not properly belongs to the workflow.
+1. **LinCAM3** - This step is intended to be done once. Create a preset for each type of material with basic CAM properties such as depth, number of passes, feed, compensation, etc. This preset is linked to a specific color and type of geometry. This is considered as a fisrt setup and does not properly belongs to the workflow.
 
 2. **Rhino** - Prepare the drawing by assigning a color to each curve depending on the desired machining job.
 
-3. **LinarandCAM3**
+3. **LinCAM3**
    - Select all curves 
    - Select material (preset)
    - Select machine (postprocessor)

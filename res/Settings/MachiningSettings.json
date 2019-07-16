@@ -219,14 +219,14 @@
             "spindle": 16000.0
         }, 
         "barrenado": {
-            "depth": 0.0, 
+            "depth": -0.0, 
             "entries": 1.0, 
             "feed": 1.0
         }, 
         "persistant": 0, 
         "grabado": {
             "feed_plunge": 1.0, 
-            "depth": 0.0, 
+            "depth": -0.0, 
             "entries": 1.0, 
             "feed_cut": 1.0
         }, 
@@ -237,15 +237,15 @@
             "finish_pass": 0.0, 
             "feed_cut": 1.0, 
             "feed_plunge": 1.0, 
-            "depth": 0.0, 
+            "depth": -0.0, 
             "xy_dist": 0.5, 
             "circular_pocketing": 1.0
         }, 
         "corte": {
             "entries": 2.0, 
             "plunge": 20.0, 
-            "finish_entries": 1.0, 
-            "finish_pass": 1.0, 
+            "finish_entries": 0.0, 
+            "finish_pass": 0.0, 
             "feed_cut": 1300.0, 
             "feed_plunge": 900.0, 
             "depth": -4.5

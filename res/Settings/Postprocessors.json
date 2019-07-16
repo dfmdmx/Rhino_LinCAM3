@@ -1,36 +1,36 @@
 {
     "AsiaRobotica": {
-        "rapid": "G00", 
+        "footer": [
+            ""
+        ], 
         "feed": "F", 
         "description": "ShopCNC\r\nWorksCNC", 
         "round_tol": 2, 
         "cut": "G01", 
-        "spindle": "S", 
         "header": [
             "G90", 
             "G17", 
             "G21", 
             "G04P10000"
         ], 
-        "footer": [
-            ""
-        ]
+        "spindle": "S", 
+        "rapid": "G00"
     }, 
     "GRBL": {
-        "rapid": "G00", 
+        "footer": [
+            "M5"
+        ], 
         "feed": "F", 
         "description": "Arduino GRBL\r\nTinyG ", 
         "round_tol": 2, 
         "cut": "G01", 
-        "spindle": "", 
         "header": [
             "G21", 
             "G90", 
             "G54", 
             "M3"
         ], 
-        "footer": [
-            "M5"
-        ]
+        "spindle": "", 
+        "rapid": "G00"
     }
 }

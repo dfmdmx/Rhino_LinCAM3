@@ -1,0 +1,371 @@
+{
+    "Movimiento rapido": {
+        "English": "Fast movement", 
+        "false": ""
+    }, 
+    "% del diametro entre pasadas (0-1):": {
+        "English": "% of the diameter between passes (0-1):", 
+        "false": ""
+    }, 
+    "Nueva rutina": {
+        "English": "New routine", 
+        "false": ""
+    }, 
+    "Pasada Acabado mm:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Encabezado": {
+        "English": "Header", 
+        "false": ""
+    }, 
+    "Cancelar": {
+        "English": "Cancel", 
+        "false": ""
+    }, 
+    "Sin objetos": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Editar": {
+        "English": "Edit", 
+        "false": ""
+    }, 
+    "Postprocesadores actualizados": {
+        "English": "Updated postprocessors"
+    }, 
+    "Velocidad router": {
+        "English": "Router's speed", 
+        "false": ""
+    }, 
+    "Feed": {
+        "English": "Feed", 
+        "false": ""
+    }, 
+    "Nueva rutina de corte": {
+        "English": "New cutting routine", 
+        "false": ""
+    }, 
+    "Tolerancia curvas:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Generar codigo": {
+        "English": "Generate code", 
+        "false": ""
+    }, 
+    "rev/min": {
+        "English": "rev/min", 
+        "false": ""
+    }, 
+    "Code": {
+        "English": "Code", 
+        "false": ""
+    }, 
+    "Deja en blanco para omitir.": {
+        "English": "Leave blank to omit.", 
+        "false": ""
+    }, 
+    "Numero de pasadas:": {
+        "English": "Number of entries:", 
+        "false": ""
+    }, 
+    "desbaste": {
+        "English": "Box", 
+        "false": ""
+    }, 
+    "Decimales": {
+        "English": "Decimals", 
+        "false": ""
+    }, 
+    "No hay objetos seleccionados": {
+        "English": "No objects selected", 
+        "false": ""
+    }, 
+    "Feed mm/min:": {
+        "English": "Feed mm/min:", 
+        "false": ""
+    }, 
+    "Selecciona donde guardar el codigo": {
+        "English": "Select where to save the code", 
+        "false": ""
+    }, 
+    "Spindle RPM": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Corte": {
+        "English": "Cut", 
+        "false": ""
+    }, 
+    "Descripcion": {
+        "English": "Description", 
+        "false": ""
+    }, 
+    "Traslado": {
+        "English": "Rapid", 
+        "false": ""
+    }, 
+    "Rutinas": {
+        "English": "Routines", 
+        "false": ""
+    }, 
+    "Deteccion de piezas": {
+        "English": "Autodetect parts", 
+        "false": ""
+    }, 
+    "Plunge mm lineales:": {
+        "English": "Linear plunge mm:", 
+        "false": ""
+    }, 
+    "Seleccionar rutina": {
+        "English": "Select routine", 
+        "false": ""
+    }, 
+    "Diametro cortador": {
+        "English": "Cutter's diameter", 
+        "false": ""
+    }, 
+    "Ordenar Zig-Zag": {
+        "English": "Sort Zig-Zag", 
+        "false": ""
+    }, 
+    "Diametro cortador:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Objetos seleccionados": {
+        "English": "Selected objects"
+    }, 
+    "Nuevo postprocesador": {
+        "English": "New postprocessor", 
+        "false": ""
+    }, 
+    "Editar rutina de corte": {
+        "English": "Edit cutting routine", 
+        "false": ""
+    }, 
+    "SinNombre": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Plano de seguridad:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Objetos agregados": {
+        "English": "Added objects", 
+        "false": ""
+    }, 
+    "Rutina borrada": {
+        "English": "Erased routine", 
+        "false": ""
+    }, 
+    "Caja circular": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Postprocesador": {
+        "English": "Postprocessor", 
+        "false": ""
+    }, 
+    "general": {
+        "English": "", 
+        "false": ""
+    }, 
+    "corte": {
+        "English": "cut", 
+        "false": ""
+    }, 
+    "Error: Selecciona al menos una curva": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Editar postprocesador": {
+        "English": "Edit postprocessor", 
+        "false": ""
+    }, 
+    "Selecciona curvas y puntos": {
+        "English": "Select curves and points", 
+        "false": ""
+    }, 
+    "Profundidad barreno (Negativo):": {
+        "English": "Drill's depth (Negative):", 
+        "false": ""
+    }, 
+    "Nombre": {
+        "English": "Name", 
+        "false": ""
+    }, 
+    "Sin rutina": {
+        "English": "Without routine", 
+        "false": ""
+    }, 
+    "Agregar curvas seleccionadas": {
+        "English": "Add selected curves", 
+        "false": ""
+    }, 
+    "Utiliza comas para agregar varias lineas.": {
+        "English": "Use commas to add several lines.", 
+        "false": ""
+    }, 
+    "Guardar capturas de pantalla": {
+        "English": "Save screenshots", 
+        "false": ""
+    }, 
+    "minutos": {
+        "English": "minutes", 
+        "false": ""
+    }, 
+    "mm": {
+        "English": "mm", 
+        "false": ""
+    }, 
+    "ajustes generales": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Plano de seguridad": {
+        "English": "Security plane", 
+        "false": ""
+    }, 
+    "Pieza": {
+        "English": "", 
+        "false": ""
+    }, 
+    "mm/min": {
+        "English": "mm/min", 
+        "false": ""
+    }, 
+    "Solo en este archivo de Rhino": {
+        "English": "Only in this Rhino file", 
+        "false": ""
+    }, 
+    "Sin objectos": {
+        "English": "No objects", 
+        "false": ""
+    }, 
+    "El uso de este programa es responsabilidad del usuario final. Es una version en desarollo y no nos hacemos responsables por ningun problema que pueda causar. Esperamos te sea de utilidad. \n\nAceptas los terminos y condiciones?": {
+        "English": "The end user is reponsable for the use of this program. It is an evolving version and we are not responsible for any problem that may cause. We hope you find it useful.\n\nDo you accept the terms and conditions?"
+    }, 
+    "Movimiento rapido mm/min:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Cambiar rutina": {
+        "English": "Change routine", 
+        "false": ""
+    }, 
+    "Profundidad corte (Negativo):": {
+        "English": "Cut's depth (Negative):", 
+        "false": ""
+    }, 
+    "Borrar": {
+        "English": "Delete", 
+        "false": ""
+    }, 
+    "Pasada Acabado entradas:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Spindle RPM:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Guardar localmente": {
+        "English": "Save locally", 
+        "false": ""
+    }, 
+    "Spindle": {
+        "English": "Spindle", 
+        "false": ""
+    }, 
+    "Numero pasadas": {
+        "English": "Number entries", 
+        "false": ""
+    }, 
+    "Plunge mm/min:": {
+        "English": "Plunge mm/min:", 
+        "false": ""
+    }, 
+    "cnc": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Numero de pasadas en Z:": {
+        "English": "Number of entries in Z:", 
+        "false": ""
+    }, 
+    "barrenado": {
+        "English": "drilling", 
+        "false": ""
+    }, 
+    "Tolerancia": {
+        "English": "Tolerance", 
+        "false": ""
+    }, 
+    "Tiempo de corte aproximado": {
+        "English": "Approximate cutting time", 
+        "false": ""
+    }, 
+    "CNC": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Notas:": {
+        "English": "Notes:", 
+        "false": ""
+    }, 
+    "Pie de codigo": {
+        "English": "Footer", 
+        "false": ""
+    }, 
+    "Tolerancia curvas": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Caja cirular (0,1):": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Nuevo": {
+        "English": "New", 
+        "false": ""
+    }, 
+    "No hay rutina seleccionada": {
+        "English": "There is no selected routine", 
+        "false": ""
+    }, 
+    "general_settings": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Numero de entradas en Z:": {
+        "English": "", 
+        "false": ""
+    }, 
+    "Ordenar por cercania": {
+        "English": "Sort by proximity", 
+        "false": ""
+    }, 
+    "Archivo guardado": {
+        "English": "Saved file", 
+        "false": ""
+    }, 
+    "Guardar": {
+        "English": "Save", 
+        "false": ""
+    }, 
+    "grabado": {
+        "English": "Engraving", 
+        "false": ""
+    }, 
+    "Rutina actualizada": {
+        "English": "Routine updated", 
+        "false": ""
+    }, 
+    "Revisa bien tu codigo.": {
+        "English": "Check your code well.", 
+        "false": ""
+    }
+}

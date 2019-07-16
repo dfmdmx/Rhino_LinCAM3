@@ -451,7 +451,6 @@ class camDialog(forms.Form):
      # Create all of the checkbox controls used by the form
     def CreateCheckboxControls(self):
         
-   
         layout = forms.DynamicLayout()
         layout.Spacing = drawing.Size(10, 3)
         ordered_checkboxes = ['sorting','sort_closest','autocluster','save_image']

@@ -36,7 +36,7 @@ import traceback
 
 COMMAND_NAME = "LinCAM3"
 VERSION = "Lin-3.2b_2019"
-WEBPAGE = 'https://www.ingenierialinarand.com/cam'
+WEBPAGE = 'https://github.com/dfmdmx/Rhino_LinCAM3'
     
 # SampleEtoRoomNumber dialog class
 class camDialog(forms.Form):

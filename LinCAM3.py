@@ -34,8 +34,8 @@ import shutil
 from collections import OrderedDict
 import traceback
 
-COMMAND_NAME = "LinarandCAM3"
-VERSION = "Lin-3.1b_2018"
+COMMAND_NAME = "LinCAM3"
+VERSION = "Lin-3.2b_2019"
 WEBPAGE = 'https://www.ingenierialinarand.com/cam'
     
 # SampleEtoRoomNumber dialog class

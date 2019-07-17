@@ -12,7 +12,7 @@
         "false": ""
     }, 
     "Pasada Acabado mm:": {
-        "English": "", 
+        "English": "Finish pass mm", 
         "false": ""
     }, 
     "Encabezado": {
@@ -24,7 +24,7 @@
         "false": ""
     }, 
     "Sin objetos": {
-        "English": "", 
+        "English": "No object", 
         "false": ""
     }, 
     "Editar": {
@@ -47,7 +47,7 @@
         "false": ""
     }, 
     "Tolerancia curvas:": {
-        "English": "", 
+        "English": "Curve tolerance", 
         "false": ""
     }, 
     "Generar codigo": {
@@ -91,7 +91,7 @@
         "false": ""
     }, 
     "Spindle RPM": {
-        "English": "", 
+        "English": "Spindle RPM", 
         "false": ""
     }, 
     "Corte": {
@@ -131,7 +131,7 @@
         "false": ""
     }, 
     "Diametro cortador:": {
-        "English": "", 
+        "English": "Cutter's diameter", 
         "false": ""
     }, 
     "Objetos seleccionados": {
@@ -146,11 +146,14 @@
         "false": ""
     }, 
     "SinNombre": {
-        "English": "", 
+        "English": "NoName", 
         "false": ""
     }, 
+    "ADVERTENCIA": {
+        "English": "Warning"
+    }, 
     "Plano de seguridad:": {
-        "English": "", 
+        "English": "Security plane", 
         "false": ""
     }, 
     "Objetos agregados": {
@@ -162,7 +165,7 @@
         "false": ""
     }, 
     "Caja circular": {
-        "English": "", 
+        "English": "Circular box", 
         "false": ""
     }, 
     "Postprocesador": {
@@ -170,7 +173,7 @@
         "false": ""
     }, 
     "general": {
-        "English": "", 
+        "English": "general", 
         "false": ""
     }, 
     "corte": {
@@ -178,7 +181,7 @@
         "false": ""
     }, 
     "Error: Selecciona al menos una curva": {
-        "English": "", 
+        "English": "Select one curve at least.", 
         "false": ""
     }, 
     "Editar postprocesador": {
@@ -222,7 +225,7 @@
         "false": ""
     }, 
     "ajustes generales": {
-        "English": "", 
+        "English": "general settings", 
         "false": ""
     }, 
     "Plano de seguridad": {
@@ -230,7 +233,7 @@
         "false": ""
     }, 
     "Pieza": {
-        "English": "", 
+        "English": "Part", 
         "false": ""
     }, 
     "mm/min": {
@@ -249,7 +252,7 @@
         "English": "The end user is reponsable for the use of this program. It is an evolving version and we are not responsible for any problem that may cause. We hope you find it useful.\n\nDo you accept the terms and conditions?"
     }, 
     "Movimiento rapido mm/min:": {
-        "English": "", 
+        "English": "Rapid movement mm/min", 
         "false": ""
     }, 
     "Cambiar rutina": {
@@ -260,16 +263,19 @@
         "English": "Cut's depth (Negative):", 
         "false": ""
     }, 
+    "Valor no numerico se reemplazo": {
+        "English": "Non numeric value, replaced by "
+    }, 
     "Borrar": {
         "English": "Delete", 
         "false": ""
     }, 
     "Pasada Acabado entradas:": {
-        "English": "", 
+        "English": "Finish pass", 
         "false": ""
     }, 
     "Spindle RPM:": {
-        "English": "", 
+        "English": "Spindle RPM:", 
         "false": ""
     }, 
     "Guardar localmente": {
@@ -289,7 +295,7 @@
         "false": ""
     }, 
     "cnc": {
-        "English": "", 
+        "English": "cnc", 
         "false": ""
     }, 
     "Numero de pasadas en Z:": {
@@ -309,7 +315,7 @@
         "false": ""
     }, 
     "CNC": {
-        "English": "", 
+        "English": "CNC", 
         "false": ""
     }, 
     "Notas:": {
@@ -321,11 +327,11 @@
         "false": ""
     }, 
     "Tolerancia curvas": {
-        "English": "", 
+        "English": "Curve tolerance", 
         "false": ""
     }, 
     "Caja cirular (0,1):": {
-        "English": "", 
+        "English": "Circular box (0,1):", 
         "false": ""
     }, 
     "Nuevo": {
@@ -337,11 +343,11 @@
         "false": ""
     }, 
     "general_settings": {
-        "English": "", 
+        "English": "general_settings", 
         "false": ""
     }, 
     "Numero de entradas en Z:": {
-        "English": "", 
+        "English": "No. entries in Z axis.", 
         "false": ""
     }, 
     "Ordenar por cercania": {

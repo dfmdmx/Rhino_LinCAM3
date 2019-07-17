@@ -212,8 +212,8 @@ class camDialog(forms.Form):
                    "autocluster":True,
                    "file_path":rs.DocumentPath(),
                    'file_name':rs.DocumentName().replace('.3dm','_gcode.nc') if rs.DocumentName() else False,
-                   "selected_preset":False,
-                   "save_image":True,
+                   "selected_preset":self.machining_settings.keys()[0] if self.machining_settings else False,
+                   "save_image":False,
                    }
         return data
     
@@ -672,12 +672,19 @@ class camDialog(forms.Form):
         self.dropdownlist.DataStore = sorted(self.postprocessors.keys())
         self.dropdownlist.SelectedIndex = sorted(self.postprocessors.keys()).index(self.user_data['post'])
     def UpdateSettingsDropdown(self):
-        machining_settings = sorted(self.machining_settings.keys())
-        preset_name = self.user_data["selected_preset"]
-        preset_description = self.machining_settings[preset_name]['descripcion'] if preset_name else ''
-        self.dropdownlist_settings.DataStore =  machining_settings 
-        self.dropdownlist_settings.SelectedIndex = machining_settings.index(self.user_data["selected_preset"])
-        self.SelectedPresetText.Text = preset_description
+        try:
+            machining_settings = sorted(self.machining_settings.keys())
+            
+            if not self.user_data["selected_preset"]:
+                self.user_data["selected_preset"] = machining_settings[0]
+            
+            preset_name = self.user_data["selected_preset"]
+            preset_description = self.machining_settings[preset_name]['descripcion']
+            self.dropdownlist_settings.DataStore =  machining_settings 
+            self.dropdownlist_settings.SelectedIndex = machining_settings.index(self.user_data["selected_preset"])
+            self.SelectedPresetText.Text = preset_description
+        except Exception as e:
+            print(e)
     
     def SelectFileName(self):
         
@@ -1217,8 +1224,9 @@ class g_curve():
         
         if rs.IsPoint(self.nurbs_curve):
             self.preview = self.get_cut_path_point(self.cut_curve)
-        elif self.compensation == 0 and not rs.IsCurveClosed(self.nurbs_curve):
+        elif self.compensation == 0:# and not rs.IsCurveClosed(self.nurbs_curve):
             self.preview =  self.get_cut_path_open(self.cut_curve) 
+
         else:
             if self.input_data["finish_pass"] and not self.input_data["finish_entries"]:
                 #Crea una pasada de acabado en el ultimo nivel

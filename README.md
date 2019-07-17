@@ -41,8 +41,8 @@ Prior into opening the plugin you will need to assign a color to each curve depe
 
 ### Install
 
- 1. [Download Rhino installation file from github](https://github.com/dfmdmx/Rhino_LinCAM3/raw/master/LinCAM3.rhi)
- 2. Install and restart Rhino.
+ 1. [Download Rhino installation file from GitHub.](https://github.com/dfmdmx/Rhino_LinCAM3/raw/master/LinCAM3.rhi)
+ 2. Install the plugin and restart Rhino.
  3. Open the plugin by typing `LinCAM3` in the Rhino command bar.
 
 ### Disclaimer

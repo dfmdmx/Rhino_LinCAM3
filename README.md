@@ -2,7 +2,7 @@
 
 ![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinCAM3/master/res/Icons/Logo/Rhino_LinCAM3_100.png)
 
-LinCAM 3 transforms Rhino 2D geometry into cutting paths for all types of g-code based CNC machines. Its UI is mainly focused on reducing the time spend between opening the drawing and creating the g-code file, making it useful for batch production. 
+LinCAM 3 plugin transforms Rhino 2D geometry into cutting paths for all types of g-code based CNC machines. Its UI is mainly focused on reducing the time spend between opening the drawing and creating the g-code file, making it useful for batch production. 
 
 ![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinCAM3/master/screenshots/general_ui_sample.png)
 

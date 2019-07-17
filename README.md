@@ -14,7 +14,7 @@ The workflow consists in three steps:
 
 2. **Rhino** - Prepare the drawing by assigning a color to each curve depending on the desired machining job.
 
-3. **LinCAM3**
+3. **LinCAM3** - 
    - Select all curves 
    - Select material (preset)
    - Select machine (postprocessor)
@@ -41,7 +41,9 @@ Prior into opening the plugin you will need to assign a color to each curve depe
 
 ### Install
 
-Windows installer .rhi Add link
+ 1. [Download Rhino installation file from github](https://raw.githubusercontent.com/dfmdmx/Rhino_LinCAM3/LinCAM3.rhi)
+ 2. Install and restart Rhino.
+ 3. Open the plugin by typing `LinCAM3` in the Rhino command bar.
 
 ### Disclaimer
 

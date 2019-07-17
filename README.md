@@ -1,8 +1,10 @@
 # LinCAM 3
 
-![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinarandCAM3/master/res/Icons/Logo/Rhino_LinCAM3_100.png)
+![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinCAM3/master/res/Icons/Logo/Rhino_LinCAM3_100.png)
 
 LinCAM 3 transforms Rhino 2D geometry into cutting paths for all types of g-code based CNC machines. Its UI is mainly focused on reducing the time spend between opening the drawing and creating the g-code file, making it useful for batch production. 
+
+![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinCAM3/master/screenshots/general_ui_sample.png)
 
 ### Basics
 
@@ -12,7 +14,7 @@ The workflow consists in three steps:
 
 2. **Rhino** - Prepare the drawing by assigning a color to each curve depending on the desired machining job.
 
-3. **LinCAM3**
+3. **LinCAM3** - 
    - Select all curves 
    - Select material (preset)
    - Select machine (postprocessor)
@@ -36,6 +38,12 @@ Prior into opening the plugin you will need to assign a color to each curve depe
  </tbody>
  </table>
 ** If no white point is selected the origin point of the drawing will be used as work zero. Using the white point is useful only when working with multiple cut sheets in a single file. 
+
+### Install
+
+ 1. [Download Rhino installation file from GitHub.](https://github.com/dfmdmx/Rhino_LinCAM3/raw/master/LinCAM3.rhi)
+ 2. Install the plugin and restart Rhino.
+ 3. Open the plugin by typing `LinCAM3` in the Rhino command bar.
 
 ### Disclaimer
 

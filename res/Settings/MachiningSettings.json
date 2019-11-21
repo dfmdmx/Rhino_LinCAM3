@@ -9,7 +9,7 @@
             "spindle": 16000.0
         }, 
         "barrenado": {
-            "depth": -4.0, 
+            "depth": -4.5, 
             "entries": 1.0, 
             "feed": 800.0
         }, 
@@ -18,14 +18,14 @@
             "feed_plunge": 900.0, 
             "depth": -1.5, 
             "entries": 1.0, 
-            "feed_cut": 1200.0
+            "feed_cut": 1300.0
         }, 
         "desbaste": {
             "entries": 1.0, 
             "plunge": 5.0, 
             "finish_entries": 0.0, 
             "finish_pass": 0.0, 
-            "feed_cut": 1200.0, 
+            "feed_cut": 1300.0, 
             "feed_plunge": 900.0, 
             "depth": -2.0, 
             "xy_dist": 0.34999999999999998, 
@@ -44,7 +44,7 @@
     "Sample Plywood - 12mm": {
         "descripcion": "", 
         "cnc": {
-            "sec_plane": 25.0, 
+            "sec_plane": 12.0, 
             "tolerance": 0.25, 
             "cut_diam": 6.0, 
             "feed_rapid": 20000.0, 
@@ -70,8 +70,8 @@
             "feed_cut": 12000.0, 
             "feed_plunge": 9000.0, 
             "depth": -5.0, 
-            "xy_dist": 0.29999999999999999, 
-            "circular_pocketing": 0.0
+            "xy_dist": 0.40000000000000002, 
+            "circular_pocketing": 1.0
         }, 
         "corte": {
             "entries": 3.0, 
@@ -93,16 +93,16 @@
             "spindle": 8000.0
         }, 
         "barrenado": {
-            "depth": -8.0, 
+            "depth": -8.5, 
             "entries": 1.0, 
             "feed": 4600.0
         }, 
         "persistant": 0, 
         "grabado": {
-            "feed_plunge": 4000.0, 
+            "feed_plunge": 3000.0, 
             "depth": -1.0, 
             "entries": 1.0, 
-            "feed_cut": 4600.0
+            "feed_cut": 4000.0
         }, 
         "desbaste": {
             "entries": 2.0, 
@@ -111,9 +111,9 @@
             "finish_pass": 0.0, 
             "feed_cut": 4000.0, 
             "feed_plunge": 3000.0, 
-            "depth": -4.5, 
-            "xy_dist": 0.5, 
-            "circular_pocketing": 0.0
+            "depth": -4.0, 
+            "xy_dist": 0.40000000000000002, 
+            "circular_pocketing": 1.0
         }, 
         "corte": {
             "entries": 4.0, 

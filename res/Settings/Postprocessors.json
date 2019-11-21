@@ -5,13 +5,13 @@
         "description": "ShopCNC\r\nWorksCNC", 
         "round_tol": 2, 
         "cut": "G01", 
+        "spindle": "S", 
         "header": [
             "G90", 
             "G17", 
             "G21", 
             "G04P10000"
         ], 
-        "spindle": "S", 
         "footer": [
             ""
         ]
@@ -22,13 +22,13 @@
         "description": "Arduino GRBL\r\nTinyG ", 
         "round_tol": 2, 
         "cut": "G01", 
+        "spindle": "", 
         "header": [
             "G21", 
             "G90", 
             "G54", 
             "M3"
         ], 
-        "spindle": "", 
         "footer": [
             "M5"
         ]

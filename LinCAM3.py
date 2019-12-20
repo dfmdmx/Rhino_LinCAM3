@@ -1590,7 +1590,6 @@ class g_curve():
         pocket_path += pocket_circles
         
         if pocket_clusters: # Revisa si es circulo
-            print('clusters')
             pocket_path += jump(rs.CurveEndPoint(pocket_circles[-1]),rs.CurveStartPoint(pocket_clusters[0]),sec_plane,self.color_palette)
             for i,path in enumerate(pocket_clusters):
                 pocket_path.append(path)
@@ -1730,9 +1729,6 @@ class g_curve():
             if self.pocketing and not omit_box and pocketing_crvs:
                 if self.input_data["circular_pocketing"]:
                     pocket_path = self.pocket_path_circular(rs.CurveEndPoint(level_cut),translation,pocketing_crvs)
-                    for p in pocket_path:
-                        print(p)
-                    print('done')
                 else:
                     pocket_path = self.pocket_path_offset(z_level,translation,pocketing_crvs)
                 curves_cut_path += pocket_path

@@ -35,7 +35,7 @@ from collections import OrderedDict
 import traceback
 
 COMMAND_NAME = "LinCAM3"
-VERSION = "Lin-3.2b_2019"
+VERSION = "Lin-3.3_dev_2019"
 WEBPAGE = 'https://github.com/dfmdmx/Rhino_LinCAM3'
     
 # SampleEtoRoomNumber dialog class
@@ -860,7 +860,7 @@ class camDialog(forms.Form):
         for obj in object_list:
             obj_time,last_point = obj.get_cut_time(last_point)
             gcode_time+= obj_time
-        return round(gcode_time,2)
+        return round(gcode_time*60/100,2)
             
     def SetProgressBar(self,index):
         value = int(((index+1)*self.progressbar.MaxValue)/self.objects_count)
@@ -1233,10 +1233,9 @@ class g_curve():
                 self.preview =  self.get_cut_path_closed(self.cut_curve,finish_pass=self.input_data["finish_pass"])
             elif self.input_data["finish_pass"]:
                 #Crea una pasada de acabado igual al cut curve pero con offset diferente
-                #TODO: El desbaste de caja hace una caja principal y despues la repite para la pasada de corte. 
                  crv_finish_offset = self.get_cut_curve(self.compensation,(self.general_input['cut_diam']*.5)+self.input_data["finish_pass"])
                  self.preview =  self.get_cut_path_closed(crv_finish_offset)
-                 self.preview += self.get_cut_path_closed(self.cut_curve,no_entries=self.input_data["finish_entries"],plunge_distance=False)
+                 self.preview += self.get_cut_path_closed(self.cut_curve,no_entries=self.input_data["finish_entries"],plunge_distance=False,omit_box=True)
             else:
                 self.preview = self.get_cut_path_closed(self.cut_curve)
                 
@@ -1479,45 +1478,136 @@ class g_curve():
             
         return branched_curves
     
-    def make_simple_pocket(self,cut_curve):
+    def get_pocketing_crvs_circular(self,crv):
+        
+        cut_curve = self.get_cut_curve(self.compensation, self.general_input['cut_diam']*.4,crv)
         
         centroid = rs.CurveAreaCentroid(cut_curve)[0]
         offset_distance = self.general_input["cut_diam"] * self.input_data["xy_dist"]
         radius = offset_distance
+        
+        start_line = rs.AddLine(rs.CurveEndPoint(crv),rs.CurveStartPoint(cut_curve))
+        end_line = rs.AddLine(rs.CurveStartPoint(cut_curve),rs.CurveEndPoint(crv))
+        
+        pocket_perimeter = [start_line,cut_curve,end_line]
+        pocket_circles = []
         pocket_curves = []
+        
         valid_circle = True
         reverse = False
         while valid_circle:
             circle = rs.AddCircle(centroid,radius)
-            
             if not reverse:
                 reverse = True
             else:
                 reverse = False
                 rs.ReverseCurve(circle)
+            
+            if rs.IsCircle(crv):
+                seam_start_point = rs.CurveClosestObject(circle,start_line)[1]
+            else:
+                seam_start_point = rs.CurveClosestObject(circle,cut_curve)[1]
                 
-            rs.CurveSeam(circle,rs.CurveClosestPoint(circle,self.start_point))
+            rs.CurveSeam(circle,rs.CurveClosestPoint(circle,seam_start_point))
             intersection_list = rs.CurveCurveIntersection(circle,cut_curve)
             if intersection_list:
                 segments = rs.SplitCurve(circle,[i[5] for i in intersection_list])
+                cluster_curves = []
                 for s in segments:
                     if not rs.PointInPlanarClosedCurve(rs.CurveMidPoint(s),cut_curve):
                         rs.DeleteObject(s)
                     else:
                         pocket_curves.append(s)
+                        cluster_curves.append(s)
             else:
                 containment = rs.PlanarClosedCurveContainment(circle,cut_curve)
                 if not containment: rs.DeleteObject(circle)
                 elif containment == 3: 
                     rs.DeleteObject(circle)
                     valid_circle = False
-                else:pocket_curves.append(circle)
+                else:
+                    if pocket_circles:
+                        circle_connection = rs.AddLine(rs.CurveEndPoint(circle),rs.CurveStartPoint(pocket_circles[-1]))
+                        pocket_circles.append(circle_connection)
+                    pocket_circles.append(circle)
             radius += offset_distance
             
-        pocket_curves.reverse()
-        return pocket_curves
-       
+        if pocket_circles:
+            if rs.IsCircle(crv): # Revisa si es circulo
+                sp,ep = rs.CurveClosestObject(pocket_circles[-1],start_line)[1:]
+            else:
+                sp,ep = rs.CurveClosestObject(pocket_circles[-1],cut_curve)[1:]
+            pocket_circles.append(rs.AddLine(sp,ep))
         
+        pocket_clusters = self.create_pocket_clusters(pocket_curves,crv,offset_distance*4) if pocket_curves else []
+        pocket_circles.reverse()
+        return [pocket_perimeter,pocket_clusters,pocket_circles]
+
+    def create_pocket_clusters(self,pocket_curves,crv,max_length):
+        joined_pocket_curves = []
+        for i in range(len(pocket_curves)):
+            pocket_curve = pocket_curves[i]
+            joined_pocket_curves.append(pocket_curve)
+            sample_curves = pocket_curves[i+1:]
+            if sample_curves:
+                closest_curve = rs.CurveClosestObject(pocket_curve,sample_curves)[0] if len(sample_curves) != 1 else sample_curves[0]
+                connection_line = rs.AddLine(rs.CurveEndPoint(pocket_curve),rs.CurveStartPoint(closest_curve))
+                if rs.CurveLength(connection_line) < max_length and not rs.CurveCurveIntersection(connection_line,crv):
+                    joined_pocket_curves.append(connection_line)
+                else:
+                    rs.DeleteObject(connection_line)   
+        clusters = rs.JoinCurves(joined_pocket_curves,delete_input=True)
+        return clusters
+        
+    def pocket_path_circular(self,cep,translation,pocket_list):
+        
+        def jump(pt1,pt2,height,color_palette):
+            up_curve = rs.AddLine(pt1,(pt1[0],pt1[1],height))
+            go_curve = rs.AddLine((pt1[0],pt1[1],height),(pt2[0],pt2[1],height))
+            down_curve = rs.AddLine((pt2[0],pt2[1],height),pt2)
+            rs.ObjectColor(up_curve,color_palette["rapid"])
+            rs.ObjectColor(go_curve,color_palette["rapid"])
+            rs.ObjectColor(down_curve,color_palette["rapid"])
+            return [up_curve,go_curve,down_curve]
+        
+        def copy_into_level(crvs,translation,color_palette):
+            level_crvs = []
+            for crv in crvs:
+                new_crv = rs.CopyObject(crv,translation)
+                rs.ObjectColor(new_crv,color_palette["cut"])
+                level_crvs.append(new_crv)
+            return level_crvs
+        
+        sec_plane = self.general_input['sec_plane']
+        pocket_perimeter,pocket_clusters,pocket_circles = [copy_into_level(i,translation,self.color_palette) for i in pocket_list]
+        
+        pocket_path = []
+        
+        pocket_path += pocket_perimeter[:-1]
+        
+        if rs.CurveEndPoint(pocket_perimeter[0]) != rs.CurveStartPoint(pocket_circles[0]): # Revisa si es circulo
+            pocket_path += jump(rs.CurveEndPoint(pocket_perimeter[0]),rs.CurveStartPoint(pocket_circles[0]),sec_plane,self.color_palette)
+        pocket_path += pocket_circles
+        
+        if pocket_clusters: # Revisa si es circulo
+            print('clusters')
+            pocket_path += jump(rs.CurveEndPoint(pocket_circles[-1]),rs.CurveStartPoint(pocket_clusters[0]),sec_plane,self.color_palette)
+            for i,path in enumerate(pocket_clusters):
+                pocket_path.append(path)
+                if i < len(pocket_clusters)-1:
+                    pocket_path += jump(rs.CurveEndPoint(path),rs.CurveStartPoint(pocket_clusters[i+1]), sec_plane, self.color_palette)
+            pocket_path += jump(rs.CurveEndPoint(pocket_clusters[-1]),rs.CurveStartPoint(pocket_perimeter[-1]), sec_plane, self.color_palette)
+        
+        pocket_path.append(pocket_perimeter[-1])
+        
+        return pocket_path
+        
+    
+    def get_pocketing_crvs_offset(self,crv):
+        crv_pocket = self.make_pocket_curves(crv)
+        if crv_pocket[0] != "sec_plane":
+            return self.finish_pocket_curves(crv_pocket)
+    
     def make_pocket_curves(self,level_cut):
         #
         cut_curves = []
@@ -1563,7 +1653,7 @@ class g_curve():
                     pass
         return block_curves
                                       
-    def get_cut_path_closed(self,main_crv,no_entries=False,plunge_distance=False,finish_pass=False):
+    def get_cut_path_closed(self,main_crv,no_entries=False,plunge_distance=False,finish_pass=False,omit_box=False):
         
         if finish_pass: crv = self.get_cut_curve(compensation=self.compensation,offset_distance=finish_pass,nurbs_curve=main_crv)
         else: crv = main_crv
@@ -1601,18 +1691,13 @@ class g_curve():
         rs.SimplifyCurve(plunge_crv)
         
         #Crea las curvas de corte para pocketing si se requiere
-        
-        if self.pocketing:
+        if self.pocketing and not omit_box:
             if self.input_data["circular_pocketing"]:
-                offset_pass = self.get_cut_curve(self.compensation, self.general_input['cut_diam']*.8)
-                pocketing_crvs = self.make_simple_pocket(offset_pass)
-                rs.DeleteObject(offset_pass)
+                pocketing_crvs = self.get_pocketing_crvs_circular(crv)
+                self.pocketing = False if not pocketing_crvs else self.pocketing
             else:
-                crv_pocket = self.make_pocket_curves(crv)
-                if crv_pocket[0] != "sec_plane":
-                    pocketing_crvs = self.finish_pocket_curves(crv_pocket)
-                else:
-                    self.pocketing = False
+                pocketing_crvs = self.get_pocketing_crvs_offset(crv)
+                self.pocketing = False if not pocketing_crvs else self.pocketing
        
         #Lista final de operacion de cortador por curva
         curves_cut_path = [] 
@@ -1642,11 +1727,14 @@ class g_curve():
             rs.ObjectColor(level_cut,self.color_palette["cut"])
             curves_cut_path.append(level_plunge)
             curves_cut_path.append(level_cut)
-            if self.pocketing and pocketing_crvs:
+            if self.pocketing and not omit_box and pocketing_crvs:
                 if self.input_data["circular_pocketing"]:
-                    pocket_path = self.simple_pocket_entry(rs.CurveEndPoint(level_cut),translation,pocketing_crvs)
+                    pocket_path = self.pocket_path_circular(rs.CurveEndPoint(level_cut),translation,pocketing_crvs)
+                    for p in pocket_path:
+                        print(p)
+                    print('done')
                 else:
-                    pocket_path = self.get_pocket_entry(z_level,translation,pocketing_crvs)
+                    pocket_path = self.pocket_path_offset(z_level,translation,pocketing_crvs)
                 curves_cut_path += pocket_path
                 
         #agrega la ultima linea de corte como plunge para no generar bote de pieza tan brusco
@@ -1687,100 +1775,19 @@ class g_curve():
         
         rs.DeleteObjects([planar_plunge_crv,plunge_crv,cut_crv,crv,main_crv])
         
-        
         #Borra las curvas de pocketing en el nivel cero que solo se usan para copiar
-        if self.pocketing and pocketing_crvs:
+        if self.pocketing and not omit_box and pocketing_crvs:
             if self.input_data["circular_pocketing"]:
-                rs.DeleteObjects(pocketing_crvs)
+                for p in pocketing_crvs:
+                    if p:
+                        rs.DeleteObjects(p)
             else:
                 for p in pocketing_crvs:
                     if p != 'sec_plane': rs.DeleteObject(p)
         
         return curves_cut_path
     
-    def simple_pocket_entry(self,cep,translation,pocket_list):
-        
-        sec_plane = self.general_input['sec_plane']
-        
-        pocket_crvs = []
-        for o in pocket_list:
-            new_crv = rs.CopyObject(o,translation)
-            rs.ObjectColor(new_crv,self.color_palette["cut"])
-            pocket_crvs.append(new_crv)
-            
-        entry_crvs = [] #Curvas base ya en z level
-        pocket_path = [] #Curvas con conexiones rapidas
-        pass_curve = False #Brinco entre circulos trimeados y circlos completos
-        last_curve = False
-        
-        end_line = [rs.AddLine((cep[0],cep[1],sec_plane),cep)]
-        #verifica si el pocketing empieza con un circulo o con un trim de circlo, solo se necesita si la curva de originen es un circulo
-        if not rs.IsCircle(pocket_crvs[0]):
-            start_line = [rs.AddLine(cep,(cep[0],cep[1],sec_plane))]
-            rs.ObjectColor(start_line,self.color_palette["rapid"])
-            entry_crvs.append(start_line)
-        else:
-            start_line = [rs.AddLine(cep,rs.CurveStartPoint(pocket_crvs[0]))]
-            rs.ObjectColor(start_line,self.color_palette["cut"])
-            pocket_path.append(start_line)
- 
-        for i in range(0,len(pocket_crvs)):
-            current_curve = pocket_crvs[i]
-            next_curve = pocket_crvs[i+1] if not pocket_crvs[i] == pocket_crvs[-1] else False
-            if current_curve != pass_curve:
-                if rs.IsCircle(current_curve):
-                    if not next_curve:
-                        ep = rs.CurveEndPoint(current_curve)
-                        out_curve = rs.AddLine(ep,(ep[0],ep[1],sec_plane))
-                        rs.ObjectColor(out_curve,self.color_palette["rapid"])
-                        entry_crvs.append([current_curve,out_curve])
-                    else:
-                        entry_crvs.append([current_curve])
-       
-                else:
-                    sp = rs.CurveStartPoint(current_curve)
-                    ep = rs.CurveEndPoint(current_curve)
-                    in_curve = rs.AddLine((sp[0],sp[1],sec_plane),sp)
-                    out_curve = rs.AddLine(ep,(ep[0],ep[1],sec_plane))
-                    rs.ObjectColor(out_curve,self.color_palette["rapid"])
-                    rs.ObjectColor(in_curve,self.color_palette["rapid"])
-                    entry_crvs.append([in_curve,current_curve,out_curve])
-                    if next_curve and rs.IsCircle(next_curve):
-                        sp = rs.CurveStartPoint(next_curve)
-                        in_curve = rs.AddLine((sp[0],sp[1],sec_plane),sp)
-                        rs.ObjectColor(in_curve,self.color_palette["plunge"])
-                        if next_curve == pocket_crvs[-1]:
-                            ep = rs.CurveEndPoint(next_curve)
-                            out_curve = rs.AddLine(ep,(ep[0],ep[1],sec_plane))
-                            rs.ObjectColor(out_curve,self.color_palette["rapid"])
-                            entry_crvs.append([in_curve,next_curve,out_curve])
-                            last_curve = next_curve
-                        else:
-                            entry_crvs.append([in_curve,next_curve])
-                        pass_curve = next_curve
-            
-        entry_crvs.append(end_line)
-        rs.ObjectColor(end_line,self.color_palette["rapid"])
-        
-        for i in range(0,len(entry_crvs)):
-            current_curve = entry_crvs[i]
-            next_curve = entry_crvs[i+1] if not entry_crvs[i] == entry_crvs[-1] else False
-            if current_curve and next_curve:
-                
-                connection = rs.AddLine(rs.CurveEndPoint(current_curve[-1]),rs.CurveStartPoint(next_curve[0]))
-                if (len(current_curve) == 1 and rs.IsCircle(current_curve)): #or (last_curve and last_curve in current_curve):
-                    rs.ObjectColor(connection,self.color_palette["cut"])
-                else:
-                    rs.ObjectColor(connection,self.color_palette["rapid"])
-                pocket_path+=current_curve
-                pocket_path.append(connection)
-                
-            else:
-                pocket_path+=current_curve
-        
-        return pocket_path
-        
-    def get_pocket_entry(self,z_level,translation,pocket_list):
+    def pocket_path_offset(self,z_level,translation,pocket_list):
         
         revised_list = []
         last_obj = None

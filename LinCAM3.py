@@ -35,7 +35,7 @@ from collections import OrderedDict
 import traceback
 
 COMMAND_NAME = "LinCAM3"
-VERSION = "Lin-3.3_dev_2019"
+VERSION = "Lin-3.3b_2019"
 WEBPAGE = 'https://github.com/dfmdmx/Rhino_LinCAM3'
     
 # SampleEtoRoomNumber dialog class

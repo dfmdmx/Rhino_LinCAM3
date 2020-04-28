@@ -1,4 +1,6 @@
-# LinCAM 3
+# LinCAM 3 Dev
+
+NOTE: This is the development version. Use master branch instead. 
 
 ![alt text](https://raw.githubusercontent.com/dfmdmx/Rhino_LinCAM3/master/res/Icons/Logo/Rhino_LinCAM3_100.png)
 
